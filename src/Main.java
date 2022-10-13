@@ -13,14 +13,22 @@ public class Main {
 
         try {
             // Не хватает обязательных полей
-            new PersonBuilder().build();
+            Person dad = new PersonBuilder()
+                    .setSurname("Вольф")
+                    .build();
+            System.out.println("У " + mom + " есть муж, " + dad);
         } catch (IllegalStateException e) {
             e.printStackTrace();
         }
 
         try {
             // Возраст недопустимый
-            new PersonBuilder().setAge(-100).build();
+            Person granddad = new PersonBuilder()
+                    .setName("Валериан")
+                    .setSurname("Ленин")
+                    .setAge(-100)
+                    .build();
+            System.out.println("У " + mom + " есть дедушка, " + granddad);
         } catch (IllegalArgumentException e) {
             e.printStackTrace();
         }

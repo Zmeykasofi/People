@@ -1,3 +1,4 @@
+import java.util.Objects;
 import java.util.OptionalInt;
 
 public class Person {
@@ -42,22 +43,28 @@ public class Person {
         return OptionalInt.of(age);
     }
 
+    public String getCity() {
+        return city;
+    }
+
     public void setCity(String city) {
         this.city = city;
     }
 
     public void happyBirthday() {
-        age += 1;
+        if(hasAge()) {
+            age += 1;
+        }
     }
 
     @Override
     public String toString() {
-        return  name + ' ' + surname + ' '+ age + " лет от роду по адресу г. " + city;
+        return  name + ' ' + surname + ' '+ age + " лет от роду из г. " + city;
     }
 
     @Override
     public int hashCode() {
-        return super.hashCode();
+        return Objects.hash(name, surname, age, city);
     }
 
     public PersonBuilder newChildBuilder() {
